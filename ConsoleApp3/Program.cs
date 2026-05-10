@@ -37,10 +37,10 @@ Console.WriteLine($"\nLibros guardados en: {ruta}");
 
 static void guardarLibros(List<Libro> lista, string ruta)
 {
-    var sw = File.CreateText(ruta);
+    // Usar 'using' para asegurar el cierre/disposing del StreamWriter
+    using var sw = File.CreateText(ruta);
     foreach (var libro in lista)
     {
         sw.WriteLine($"{libro.Titulo};{libro.Autor};{libro.Anyo};{libro.Disponible}");
     }
-    sw.Close();
 }
